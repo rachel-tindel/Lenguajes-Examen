@@ -23,6 +23,7 @@ public class MajorController {
     public List<Major> getAllMajors() {
         return service.getAllMajors();
     }
+
     @GetMapping("/getMajor/{id}")
     public ResponseEntity<Major> getMajorById(@PathVariable Integer id){
         try {
@@ -34,17 +35,35 @@ public class MajorController {
     }
     @PostMapping("/saveMajor")
     public ResponseEntity<?> insertMajor(@RequestBody Major major) {
+        try{
+
         service.insertMajorSP(major);
         return new ResponseEntity(HttpStatus.CREATED);
+
+        }catch (NoSuchElementException e){
+            return new ResponseEntity<Major>(HttpStatus.NOT_FOUND);
+        }
     }
+
     @PostMapping("/updateMajor")
-    public void updateMajor(@RequestBody Major major){
-        service.updateMajorSP(major);
+    public ResponseEntity<?> updateMajor(@RequestBody Major major){
+        try{
+            service.updateMajorSP(major);
+            return new ResponseEntity(HttpStatus.CREATED);
+
+        }catch (NoSuchElementException e){
+            return new ResponseEntity<Major>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @DeleteMapping("/deleteMajorSP/{id}")
-    public void deleteMajorSP(@PathVariable int id) {
-        service.deleteMajorSP(id);
-    }
+    public ResponseEntity<?> deleteMajorSP(@PathVariable int id) {
+        try{
+            service.deleteMajorSP(id);
+            return new ResponseEntity(HttpStatus.CREATED);
 
+        }catch (NoSuchElementException e){
+            return new ResponseEntity<Major>(HttpStatus.NOT_FOUND);
+        }
+    }
 }
