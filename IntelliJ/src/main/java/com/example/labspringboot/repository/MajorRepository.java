@@ -17,12 +17,14 @@ public interface MajorRepository extends JpaRepository<Major, Integer> {
     Major getMajorById(@Param("Id") Integer id);
     @Procedure(name = "Major.insertMajorSP")
     void insertMajorSP(@Param("Code") String code,
-                         @Param("Name") String name );
+                         @Param("Name") String name,
+                       @Param("Numberofterms") String numberofterms);
 
     @Procedure(name = "Major.updateMajorSP")
     void updateMajorSP(@Param("Id") Integer majorId,
                          @Param("Code") String code,
-                         @Param("Name") String name );
+                         @Param("Name") String name,
+                       @Param("Numberofterms") String numberofterms);
     @Procedure(name = "Major.deleteMajorSP")
     void deleteMajorSP(@Param("Id") int id);
 

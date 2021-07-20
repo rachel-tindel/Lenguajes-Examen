@@ -11,13 +11,15 @@ import javax.persistence.*;
 
 @NamedStoredProcedureQuery(name = "Major.insertMajorSP",procedureName = "InsertMajor", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Code", type = String.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Name", type = String.class)
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Name", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Numberofterms", type = String.class)
 })
 
 @NamedStoredProcedureQuery(name = "Major.updateMajorSP",procedureName = "UpdateMajor", parameters = {
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Id", type = Integer.class),
         @StoredProcedureParameter(mode = ParameterMode.IN, name = "Code", type = String.class),
-        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Name", type = String.class)
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Name", type = String.class),
+        @StoredProcedureParameter(mode = ParameterMode.IN, name = "Numberofterms", type = String.class)
 })
 public class Major {
 
@@ -26,15 +28,17 @@ public class Major {
     private int id;
     private String code;
     private String name;
+    private String numberofterms;
 
     public Major(){
 
     }
 
-    public Major(int id, String code, String name) {
+    public Major(int id, String code, String name, String numberofterms) {
         this.setId(id);
         this.setCode(code);
         this.setName(name);
+        this.setNumberofterms(numberofterms);
     }
 
     public int getId() {
@@ -59,5 +63,13 @@ public class Major {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getNumberofterms() {
+        return numberofterms;
+    }
+
+    public void setNumberofterms(String numberofterms) {
+        this.numberofterms = numberofterms;
     }
 }

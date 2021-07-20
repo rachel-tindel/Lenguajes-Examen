@@ -24,12 +24,12 @@ public class MajorService {
     //From the stored procedure
     public void insertMajorSP(Major major) {
         repository.insertMajorSP(major.getCode(),
-                major.getName());
+                major.getName(), major.getNumberofterms());
     }
     //From the stored procedure
     public void updateMajorSP(Major major) {
         repository.updateMajorSP(major.getId(),major.getCode(),
-                major.getName());
+                major.getName(), major.getNumberofterms());
     }
     //From the stored procedure
     public void deleteMajorSP(int id) {
